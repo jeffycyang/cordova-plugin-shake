@@ -6,7 +6,7 @@ module.exports = (function () {
     var watchId = null;
 
     var options = {
-        frequency: 300
+        frequency: 50
     };
 
     var previousAcceleration = {
@@ -68,7 +68,7 @@ module.exports = (function () {
         }
     };
 
-    // Prevent duplicate shakes within 750ms
+    // Prevent duplicate shakes within 100ms
     var debounce = function (onShake) {
         var timeout;
         return function () {
@@ -79,7 +79,7 @@ module.exports = (function () {
             timeout = setTimeout(function () {
                 clearTimeout(timeout);
                 timeout = null;
-            }, 750);
+            }, 100);
 
             onShake();
         };
